@@ -22,7 +22,7 @@ jobs:
  
       - name: Build and test with Maven
         working-directory: simple-api
-        run: mvn clean verify
+        run: mvn clean verify 
      
       - name: Sonar Cloud integration
         run: mvn -B verify sonar:sonar -Dsonar.projectKey=EmmanuelDagnogo_tp-devops-correction-docker -Dsonar.organization=tp-dev  -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}  --file ./simple-api/pom.xml
