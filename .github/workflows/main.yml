@@ -24,7 +24,8 @@ jobs:
         working-directory: simple-api
         run: mvn clean verify
      
-      
+      - name: Sonar Cloud integration
+        run: mvn -B verify sonar:sonar -Dsonar.projectKey=tp-devops-corr_test-clean -Dsonar.organization=tp_devops_corr -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}  --file ./simple-api/pom.xml
  
  
   build-and-push-docker-image:
@@ -58,4 +59,3 @@ jobs:
           context: ./http-server
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-httpd:latest
           push: ${{ github.ref == 'refs/heads/main' }}
- 
