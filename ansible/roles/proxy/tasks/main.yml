@@ -9,7 +9,7 @@
     pull: true
     recreate: true
     force_kill: true
- 
+    state: started
     ports:
       - "80:80"
     networks:
