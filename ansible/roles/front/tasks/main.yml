@@ -1,6 +1,6 @@
 - name: Run Frontend container
   docker_container:
-    name: frontend
+    name: front
     image: "dagnogo28/tp-devops-front:latest"
     pull: true
     recreate: true
