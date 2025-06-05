@@ -1,0 +1,16 @@
+---
+
+- name: Run database container
+  docker_container:
+    name: database
+    image: dagnogo28/tp-devops-database:latest
+    networks:
+      - name: app_network
+    env:
+      POSTGRES_USER: usr
+      POSTGRES_PASSWORD: pwd
+      POSTGRES_DB: db
+    volumes:
+      - db_data:/var/lib/postgresql/data
+  vars:
+    ansible_python_interpreter: /usr/bin/python3

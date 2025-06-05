@@ -1,0 +1,12 @@
+
+---
+
+# tasks file for roles/proxy
+- name: Run HTTP proxy container
+  docker_container:
+    name: httpd
+    image: dagnogo28/tp-devops-httpd:latest
+    ports:
+      - "80:80"
+    networks:
+      - name: app_network

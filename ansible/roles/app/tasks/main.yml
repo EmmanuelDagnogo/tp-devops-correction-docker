@@ -1,0 +1,14 @@
+
+
+- name: Run backend container
+  docker_container:
+    name: simple-api
+    image: dagnogo28/tp-devops-backend:latest
+    networks:
+      - name: app_network
+    ports:
+      - "8080:8080"
+    env:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/db
+      SPRING_DATASOURCE_USERNAME: usr
+      SPRING_DATASOURCE_PASSWORD: pwd
