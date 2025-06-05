@@ -58,15 +58,15 @@ jobs:
         with:
           context: ./http-server
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-httpd:latest
-          push: ${{ github.ref == 'refs/heads/main' }}
-          
+          push: ${{ github.ref == 'refs/heads/main' }}  
+
       - name: Build and push frontend image
         uses: docker/build-push-action@v6
         with:
           context: ./front
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-front:latest
           push: ${{ github.ref == 'refs/heads/main' }}
-
+          
   deploy:
     needs: build-and-push-docker-image
     runs-on: ubuntu-24.04
@@ -80,7 +80,14 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       
-      
+      - name: Add SSH host key to known_hosts
+        run: |
+            mkdir -p ~/.ssh
+            ssh-keyscan -H emmanuel.dagnogo.takima.cloud >> ~/.ssh/known_hosts
+      - name: Set up SSH key
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > id_rsa
+          chmod 600 id_rsa
       - name: Install Ansible
         run: sudo apt update && sudo apt install -y ansible
 
