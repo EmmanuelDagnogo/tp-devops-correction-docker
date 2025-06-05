@@ -11,9 +11,9 @@
     networks:
       - name: app_network
     env:
-      POSTGRES_USER: usr
-      POSTGRES_PASSWORD: pwd
-      POSTGRES_DB: db
+      POSTGRES_USER: "{{ env_vars.POSTGRES_USER }}"
+      POSTGRES_PASSWORD: "{{ env_vars.POSTGRES_PASSWORD }}"
+      POSTGRES_DB: "{{ env_vars.POSTGRES_DB }}"
     volumes:
       - db_data:/var/lib/postgresql/data
   vars:

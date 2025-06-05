@@ -11,6 +11,6 @@
     force_kill: true
     state: started
     ports:
-      - "80:80"
+      - "{{ env_vars.PROXY_PORT }}:80"
     networks:
       - name: app_network
