@@ -1,5 +1,9 @@
 
-
+- name: Load environment variables
+  include_vars:
+    file: "{{ playbook_dir }}/../.env.yml"
+    name: env_vars
+    
 - name: Run backend container
   docker_container:
     name: simple-api

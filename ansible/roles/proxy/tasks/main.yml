@@ -1,6 +1,10 @@
 
 ---
-
+- name: Load environment variables
+  include_vars:
+    file: "{{ playbook_dir }}/../.env.yml"
+    name: env_vars
+    
 # tasks file for roles/proxy
 - name: Run HTTP proxy container
   docker_container:
