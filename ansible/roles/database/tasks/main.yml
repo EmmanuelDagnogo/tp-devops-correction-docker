@@ -4,6 +4,10 @@
   docker_container:
     name: database
     image: dagnogo28/tp-devops-database:latest
+    pull: true
+    recreate: true
+    force_kill: true
+ 
     networks:
       - name: app_network
     env:

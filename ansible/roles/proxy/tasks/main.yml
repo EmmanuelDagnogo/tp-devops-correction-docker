@@ -6,6 +6,10 @@
   docker_container:
     name: httpd
     image: dagnogo28/tp-devops-httpd:latest
+    pull: true
+    recreate: true
+    force_kill: true
+ 
     ports:
       - "80:80"
     networks:

@@ -2,6 +2,9 @@
   docker_container:
     name: frontend
     image: "dagnogo28/tp-devops-front:latest"
+    pull: true
+    recreate: true
+    force_kill: true
     state: started
     restart_policy: always
     networks:
